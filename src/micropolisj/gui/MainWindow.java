@@ -655,7 +655,18 @@ public class MainWindow extends JFrame
 			}
 			}));
 		disastersMenu.add(menuItem);
-
+		
+		menuItem = new JMenuItem(strings.getString("menu.disasters.INVASION"));
+		setupKeys(menuItem, "menu.disasters.INVASION");
+		menuItem.addActionListener(wrapActionListener(
+			new ActionListener() {
+			public void actionPerformed(ActionEvent ev)
+			{
+				onInvokeDisasterClicked(Disaster.INVASION);
+			}
+			}));
+		disastersMenu.add(menuItem);
+		
 		JMenu priorityMenu = new JMenu(strings.getString("menu.speed"));
 		setupKeys(priorityMenu, "menu.speed");
 		menuBar.add(priorityMenu);

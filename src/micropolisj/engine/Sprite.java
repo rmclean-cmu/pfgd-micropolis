@@ -152,6 +152,7 @@ public abstract class Sprite
 			city.crashLocation = new CityLocation(xpos, ypos);
 			city.sendMessageAt(MicropolisMessage.COPTER_CRASH_REPORT, xpos, ypos);
 			break;
+		case INV:
 		}
 
 		city.makeSound(xpos, ypos, Sound.EXPLOSION_HIGH);

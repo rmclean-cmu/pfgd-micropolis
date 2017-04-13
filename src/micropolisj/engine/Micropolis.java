@@ -913,6 +913,8 @@ public class Micropolis
 			makeEarthquake();
 			break;
 		case 7:
+			makeInvasion();
+			break;
 		case 8:
 			if (pollutionAverage > 60) {
 				makeMonster();
@@ -2367,7 +2369,25 @@ public class Micropolis
 		sprites.add(new TornadoSprite(this, xpos, ypos));
 		sendMessageAt(MicropolisMessage.TORNADO_REPORT, xpos, ypos);
 	}
+	
+	public void makeInvasion()
+	{
+		InvasionSprite invasion = (InvasionSprite) getSprite(SpriteKind.INV);
+		if (invasion != null) {
+			// already have a tornado, so extend the length of the
+			// existing tornado
+			invasion.count = 200;
+			return;
+		}
 
+		//FIXME- this is not exactly like the original code
+		int xpos = PRNG.nextInt(getWidth() - 19) + 10;
+		int ypos = PRNG.nextInt(getHeight() - 19) + 10;
+		sprites.add(new InvasionSprite(this, xpos, ypos));
+		sendMessageAt(MicropolisMessage.INVASION_REPORT, xpos, ypos);
+	}
+		
+						
 	public void makeFlood()
 	{
 		final int [] DX = { 0, 1, 0, -1 };
